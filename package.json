@@ -1,0 +1,32 @@
+{
+	"name": "secretary-of-states-idaho",
+	"version": "1.0.0",
+	"description": "Using javascript and axios, Jordan scrapes the Idaho Secretary of State of recently registered business within the state of Idaho.",
+	"main": "./dist/index.js",
+	"scripts": {
+		"start:idaho": "tsc && node ./dist/idaho/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aarmora/jordan-scrapes-secretary-of-states"
+	},
+	"keywords": [
+		"typescript",
+		"javsacript",
+		"axios"
+	],
+	"author": "Jordan Hansen",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/aarmora/jordan-scrapes-secretary-of-states-idaho/issues"
+	},
+	"homepage": "https://github.com/aarmora/jordan-scrapes-secretary-of-states-idaho#readme",
+	"devDependencies": {
+		"@types/axios": "^0.14.0",
+		"@types/node": "^13.5.0",
+		"typescript": "^3.7.5"
+	},
+	"dependencies": {
+		"axios": "^0.19.2"
+	}
+}
