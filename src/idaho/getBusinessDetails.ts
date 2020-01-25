@@ -41,7 +41,6 @@ export async function getBusinessDetails(businesses: any[]) {
 		if (businessInfo.DRAWER_DETAIL_LIST[7] && businessInfo.DRAWER_DETAIL_LIST[7].LABEL === 'AR Due Date') {
 			businesses[i].arDueDate = businessInfo.DRAWER_DETAIL_LIST[7].VALUE;
 		}
-		// Don't love how this duplicates
 		else if (businessInfo.DRAWER_DETAIL_LIST[7] && businessInfo.DRAWER_DETAIL_LIST[7].LABEL === 'Registered Agent') {
 			// Registered agent stuff
 			const registeredAgentSplit = businessInfo.DRAWER_DETAIL_LIST[7].VALUE.split(/\n/);
