@@ -23,10 +23,12 @@
 	"homepage": "https://github.com/aarmora/jordan-scrapes-secretary-of-states-idaho#readme",
 	"devDependencies": {
 		"@types/axios": "^0.14.0",
+		"@types/cheerio": "^0.22.15",
 		"@types/node": "^13.5.0",
 		"typescript": "^3.7.5"
 	},
 	"dependencies": {
-		"axios": "^0.19.2"
+		"axios": "^0.19.2",
+		"cheerio": "^1.0.0-rc.3"
 	}
 }
