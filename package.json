@@ -4,7 +4,8 @@
 	"description": "Using javascript and axios, Jordan scrapes the Idaho Secretary of State of recently registered business within the state of Idaho.",
 	"main": "./dist/index.js",
 	"scripts": {
-		"start:idaho": "tsc && node ./dist/idaho/index.js"
+		"start:idaho": "tsc && node ./dist/idaho/index.js",
+		"start:oregon": "tsc && node ./dist/oregon/index.js"
 	},
 	"repository": {
 		"type": "git",
