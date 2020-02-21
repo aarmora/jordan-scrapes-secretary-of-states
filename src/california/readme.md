@@ -1,10 +1,10 @@
-# Jordan Scrapes Secretary of States: Oregon
+# Jordan Scrapes Secretary of States: California
 
 This package has some sample code getting data from the [California Secretary of Search Business Search](https://businesssearch.sos.ca.gov/). 
 
 Worth noting that there was a break in the list of ids.
 
-Id ceiling as of 02/21/2020 - 4562055
+Id ceiling as of 02/21/2020 - 4562715
 
 Numbers start here after big break - 4522201
 Date starts randomly at 03/06/2019

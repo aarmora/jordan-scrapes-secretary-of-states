@@ -4,7 +4,7 @@ import { timeout } from '../helpers';
 
 (async () => {
 	const url = 'https://businesssearch.sos.ca.gov/CBS/Detail';
-	// Id ceiling as of 02/21/2020 - 4562055
+	// Id ceiling as of 02/21/2020 - 4562715
 
 	// Numbers start here after big break - 4522201
 	// Date starts randomly at 03/06/2019
@@ -13,7 +13,7 @@ import { timeout } from '../helpers';
 	// Date stops around 10/23/2019
 
 
-	const startingEntityId = 4562000;
+	const startingEntityId = 4562700;
 
 	for (let i = 0; i < 100; i++) {
 
@@ -32,13 +32,6 @@ import { timeout } from '../helpers';
 
 		const businessTitle = $('.col-md-12 h2').text();
 
-		const pageTitle = $('title').text();
-
-		const html = $('html').text();
-
-		const date = $('#maincontent div:nth-of-type(3) div:nth-of-type(2)').text();
-		const status = $('#maincontent div:nth-of-type(6) div:nth-of-type(2)').text();
-
 		const businessListing = {
 			filingDate: formatText($('#maincontent div:nth-of-type(3) div:nth-of-type(2)').text()),
 			status: formatText($('#maincontent div:nth-of-type(6) div:nth-of-type(2)').text()),
@@ -46,10 +39,11 @@ import { timeout } from '../helpers';
 			agent: formatText($('#maincontent div:nth-of-type(7) div:nth-of-type(2)').text()),
 			physicalAddress: formatText($('#maincontent div:nth-of-type(8) div:nth-of-type(2)').text()),
 			mailingAddress: formatText($('#maincontent div:nth-of-type(9) div:nth-of-type(2)').text()),
-			title: businessTitle.replace(`C${startingEntityId + i}`, '').replace(/\n/g, '').trim()
+			title: businessTitle.replace(`C${startingEntityId + i}`, '').replace(/\n/g, '').trim(),
+			sosId: startingEntityId + i
 		};
 
-		console.log('Business', businessListing);
+		console.log('Business', businessListing, startingEntityId + i);
 
 		await timeout(1000);
 	}
@@ -60,13 +54,4 @@ function formatText(text: string) {
 	return text.replace(/\n/g, '').replace('Entity Mailing City, State, Zip', '')
 		.replace('Entity City, State, Zip', '')
 		.replace('Entity Mailing Address', '').replace('Entity Address', '').trim();
-}
-
-function formatBusinessTitle(title: string, id: string) {
-	if (title.includes('/\n/')) {
-		return title.replace(`C${id}`, '').replace('\n', '').trim();
-	}
-	else {
-		return title.replace(`C${id}`, '').trim();
-	}
 }
