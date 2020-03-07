@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import cheerio from 'cheerio';
-import { viewState } from './viewState';
 import Client from '@infosimples/node_two_captcha';
 import dotenv from 'dotenv';
 
