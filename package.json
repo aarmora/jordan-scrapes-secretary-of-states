@@ -8,7 +8,8 @@
 		"start:oregon": "tsc && node ./dist/oregon/index.js",
 		"start:california": "tsc && node ./dist/california/index.js",
 		"start:delaware": "tsc && node ./dist/delaware/index.js",
-		"start:wyoming": "tsc && node ./dist/wyoming/index.js"
+		"start:wyoming": "tsc && node ./dist/wyoming/index.js",
+		"start:washington": "tsc && node ./dist/washington/index.js"
 	},
 	"repository": {
 		"type": "git",
