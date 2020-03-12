@@ -11,3 +11,5 @@
 [Delaware](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/delaware)
 
 [Wyoming](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/wyoming)
+
+[Washington](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/washington)
