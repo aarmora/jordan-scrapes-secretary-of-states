@@ -7,10 +7,10 @@ import cheerio from 'cheerio';
 
 	for (let i = 0; i < 20; i++) {
 		try {
-			await getBusinessDetails(id + (i * 1));
+			await getBusinessDetails(id + (i * 25));
 		}
 		catch (e) {
-			console.log('something broke', id + (i * 1));
+			console.log('something broke', id + (i * 25));
 		}
 	}
 
