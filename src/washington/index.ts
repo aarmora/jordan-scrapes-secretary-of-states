@@ -30,8 +30,5 @@ async function getBusinessDetails(id: number) {
 		console.log('DateOfIncorporation', axiosResponse.data.DateOfIncorporation);
 
 	}
-
-
 	await timeout(1000);
-
 }
