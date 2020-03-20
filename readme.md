@@ -14,4 +14,4 @@
 
 [Washington](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/washington)
 
-[New Mexico](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/washington)
+[New Mexico](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/newMexico)
