@@ -1,10 +1,8 @@
-# Jordan Scrapes Secretary of States: New Mexico
+# Jordan Scrapes Secretary of States: Colorado
 
-This package has some sample code getting data from the [New Mexico Secretary of Search Business Search](https://portal.sos.state.nm.us/BFS/online/CorporationBusinessSearch). 
+This package has some sample code getting data from the [Colorado Secretary of Search Business Search](https://www.sos.state.co.us/biz/AdvancedSearchCriteria.do). 
 
-Id ending around March of 2016 - 382227
-
-Most recent id as of March 20, 2020 - 612241
+As of March 21, 2020, id 20201243786 was one of the latest but probably not the latest.
 
 ## Getting Started
 
@@ -12,7 +10,7 @@ Clone the repository and run `npm i`.
 
 After that, you just need to run `npm start`.
 
-[Full Guide Here](https://javascriptwebscrapingguy.com/jordan-scrapes-secretary-of-states-new-mexico/)
+[Full Guide Here](https://javascriptwebscrapingguy.com/jordan-scrapes-secretary-of-states-colorado/)
 
 ### Prerequisites
 

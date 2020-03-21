@@ -6,11 +6,12 @@ import cheerio from 'cheerio';
 	const id = 612231;
 
 	for (let i = 0; i < 20; i++) {
+		const increment = 10000;
 		try {
-			await getBusinessDetails(id + (i * 25));
+			await getBusinessDetails(id + (i * increment));
 		}
 		catch (e) {
-			console.log('something broke', id + (i * 25));
+			console.log('something broke', id + (i * increment));
 		}
 	}
 

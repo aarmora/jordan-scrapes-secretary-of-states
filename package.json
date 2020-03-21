@@ -10,7 +10,8 @@
 		"start:delaware": "tsc && node ./dist/delaware/index.js",
 		"start:wyoming": "tsc && node ./dist/wyoming/index.js",
 		"start:washington": "tsc && node ./dist/washington/index.js",
-		"start:newMexico": "tsc && node ./dist/newMexico/index.js"
+		"start:newMexico": "tsc && node ./dist/newMexico/index.js",
+		"start:colorado": "tsc && node ./dist/colorado/index.js"
 	},
 	"repository": {
 		"type": "git",
