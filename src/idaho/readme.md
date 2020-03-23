@@ -2,7 +2,7 @@
 
 This package has some sample code getting data from the [Idaho Secretary of Search Business Search](https://sosbiz.idaho.gov/search/business). 
 
-Upon discovering that North Dakota uses the same software for their businesses database, the main functions doing the work have been abstracted to the [businesssearch-helpers]() section.
+Upon discovering that North Dakota uses the same software for their businesses database, the main functions doing the work have been abstracted to the [businesssearch-helpers](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/businesssearch-helpers) section.
 
 ## Getting Started
 

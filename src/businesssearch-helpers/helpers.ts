@@ -24,7 +24,7 @@ export async function searchBusinesses(search: string, domain: string, date: str
 		axiosResponse = await axios.post(url, body);
 	}
 	catch (e) {
-		console.log(`Error searching ${domain} business info for`, search, e);
+		console.log(`Error searching ${domain} business info for`, search, e.response ? e.response.data : '');
 		throw `Error searching ${domain} business info for ${search}`;
 
 	}
@@ -67,8 +67,6 @@ export async function searchForBusinesses(domain: string, state: string, dateSea
 			}
 		}
 
-		console.log('formattedBusinesses sample', formattedBusinesses[3], formattedBusinesses[150]);
-
 		// Wait five seconds like good citizens
 		await timeout(5000);
 	}
@@ -83,60 +81,61 @@ export async function getBusinessDetails(businesses: any[], domain: string) {
 	for (let i = 0; i < businesses.length; i++) {
 
 		const businessInfo = await getBusinessInformation(businesses[i].sosId, domain);
-		console.log('checking business info for', businesses[i]);
 
-		businesses[i].filingType = businessInfo.DRAWER_DETAIL_LIST[0].VALUE;
-		businesses[i].status = businessInfo.DRAWER_DETAIL_LIST[1].VALUE;
-		businesses[i].formedIn = businessInfo.DRAWER_DETAIL_LIST[2].VALUE;
+		for (let drawer of businessInfo.DRAWER_DETAIL_LIST) {
+			switch (drawer.LABEL) {
+				case 'Filing Type':
+					businesses[i].filingType = drawer.VALUE;
+					break;
+				case 'Status':
+					businesses[i].status = drawer.VALUE;
+					break;
+				case 'Formed In':
+					businesses[i].formedIn = drawer.VALUE;
+					break;
+				case 'Principal Address':
+					const principalAddressSplit = drawer.VALUE.split(/\n/);
+					businesses[i].principalAddressStreet = principalAddressSplit[0];
 
-		// Principal address stuff
-		const principalAddressSplit = businessInfo.DRAWER_DETAIL_LIST[4].VALUE.split(/\n/);
-		businesses[i].principalAddressStreet = principalAddressSplit[0];
+					const formattedPrincipalCityStateAndZip = formatCityStateAndZip(principalAddressSplit[1]);
+					businesses[i].principalAddressCity = formattedPrincipalCityStateAndZip.city;
+					businesses[i].principalAddressState = formattedPrincipalCityStateAndZip.state;
+					businesses[i].principalAddressZipcode = formattedPrincipalCityStateAndZip.zipcode;
+					break;
+				case 'Mailing Address':
+					const mailingAddressSplit = drawer.VALUE.split(/\n/);
+					businesses[i].mailingAddressStreet = mailingAddressSplit[0];
 
-		const formattedPrincipalCityStateAndZip = formatCityStateAndZip(principalAddressSplit[1]);
-		businesses[i].principalAddressCity = formattedPrincipalCityStateAndZip.city;
-		businesses[i].principalAddressState = formattedPrincipalCityStateAndZip.state;
-		businesses[i].principalAddressZipcode = formattedPrincipalCityStateAndZip.zipcode;
+					const formattedMailingCityStateAndZip = formatCityStateAndZip(mailingAddressSplit[1]);
+					businesses[i].mailingAddressCity = formattedMailingCityStateAndZip.city;
+					businesses[i].mailingAddressState = formattedMailingCityStateAndZip.state;
+					businesses[i].mailingAddressZipcode = formattedMailingCityStateAndZip.zipcode;
+					break;
+				case 'AR Due Date':
+					businesses[i].arDueDate = drawer.VALUE;
+					break;
+				case 'Registered Agent':
+					const registeredAgentSplit = drawer.VALUE.split(/\n/);
+					businesses[i].registeredAgentType = registeredAgentSplit[0];
+					businesses[i].registeredAgentId = registeredAgentSplit[1];
+					businesses[i].registeredAgentName = registeredAgentSplit[2];
+					businesses[i].registeredAgentStreetAddress = registeredAgentSplit[3];
 
-		// Mailing address stuff
-		const mailingAddressSplit = businessInfo.DRAWER_DETAIL_LIST[5].VALUE.split(/\n/);
-		businesses[i].mailingAddressStreet = mailingAddressSplit[0];
-
-		const formattedMailingCityStateAndZip = formatCityStateAndZip(mailingAddressSplit[1]);
-		businesses[i].mailingAddressCity = formattedMailingCityStateAndZip.city;
-		businesses[i].mailingAddressState = formattedMailingCityStateAndZip.state;
-		businesses[i].mailingAddressZipcode = formattedMailingCityStateAndZip.zipcode;
-
-		if (businessInfo.DRAWER_DETAIL_LIST[7] && businessInfo.DRAWER_DETAIL_LIST[7].LABEL === 'AR Due Date') {
-			businesses[i].arDueDate = businessInfo.DRAWER_DETAIL_LIST[7].VALUE;
-		}
-		else if (businessInfo.DRAWER_DETAIL_LIST[7] && businessInfo.DRAWER_DETAIL_LIST[7].LABEL === 'Registered Agent') {
-			// Registered agent stuff
-			const registeredAgentSplit = businessInfo.DRAWER_DETAIL_LIST[7].VALUE.split(/\n/);
-			businesses[i].registeredAgentType = registeredAgentSplit[0];
-			businesses[i].registeredAgentId = registeredAgentSplit[1];
-			businesses[i].registeredAgentName = registeredAgentSplit[2];
-			businesses[i].registeredAgentStreetAddress = registeredAgentSplit[3];
-
-			const formattedCityStateAndZip = formatCityStateAndZip(registeredAgentSplit[4]);
-			businesses[i].registeredAgentCity = formattedCityStateAndZip.city;
-			businesses[i].registeredAgentState = formattedCityStateAndZip.state;
-			businesses[i].registeredAgentZipcode = formattedCityStateAndZip.zipcode;
-
-		}
-
-		if (businessInfo.DRAWER_DETAIL_LIST[8] && businessInfo.DRAWER_DETAIL_LIST[8].LABEL === 'Registered Agent') {
-			// Registered agent stuff
-			const registeredAgentSplit = businessInfo.DRAWER_DETAIL_LIST[8].VALUE.split(/\n/);
-			businesses[i].registeredAgentType = registeredAgentSplit[0];
-			businesses[i].registeredAgentId = registeredAgentSplit[1];
-			businesses[i].registeredAgentName = registeredAgentSplit[2];
-			businesses[i].registeredAgentStreetAddress = registeredAgentSplit[3];
-
-			const formattedCityStateAndZip = formatCityStateAndZip(registeredAgentSplit[4]);
-			businesses[i].registeredAgentCity = formattedCityStateAndZip.city;
-			businesses[i].registeredAgentState = formattedCityStateAndZip.state;
-			businesses[i].registeredAgentZipcode = formattedCityStateAndZip.zipcode;
+					const formattedCityStateAndZip = formatCityStateAndZip(registeredAgentSplit[4]);
+					businesses[i].registeredAgentCity = formattedCityStateAndZip.city;
+					businesses[i].registeredAgentState = formattedCityStateAndZip.state;
+					businesses[i].registeredAgentZipcode = formattedCityStateAndZip.zipcode;
+					break;
+				case 'Nature of Business':
+					businesses[i].industry = drawer.VALUE;
+					break;
+				case 'Initial Filing Date':
+					businesses[i].filingDate = drawer.VALUE;
+					break;
+				case 'Owner Name':
+					businesses[i].ownerName = drawer.VALUE;
+					break;
+			}
 		}
 
 		businesses[i].updatedAt = new Date();

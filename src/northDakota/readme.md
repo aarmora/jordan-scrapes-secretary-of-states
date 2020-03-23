@@ -1,6 +1,6 @@
 # Jordan Scrapes Secretary of States: North Dakota
 
-This package has some sample code getting data from the [Idaho Secretary of Search Business Search](https://sosbiz.idaho.gov/search/business). 
+This package has some sample code getting data from the [North Dakota Secretary of Search Business Search](https://firststop.sos.nd.gov/search/business). 
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ Clone the repository and run `npm i`.
 
 After that, you just need to run `npm start`.
 
-[Full Guide Here](https://javascriptwebscrapingguy.com/jordan-scrapes-secretary-of-states-idaho/)
+[Full Guide Here](https://javascriptwebscrapingguy.com/jordan-scrapes-secretary-of-states-north-dakota/)
 
 ### Prerequisites
 

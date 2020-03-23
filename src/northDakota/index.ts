@@ -3,8 +3,8 @@ import { searchForBusinesses, getBusinessDetails } from "./../businesssearch-hel
 (async () => {
 	const domain = 'firststop.sos.nd.gov';
 	const businesses = await searchForBusinesses(domain, 'North Dakota');
-	await getBusinessDetails(businesses, domain);
+	await getBusinessDetails([businesses[10], businesses[255], businesses[344]], domain);
 
-	console.log('businesses', businesses);
+	console.log('business-10', businesses[10], businesses[255], businesses[344]);
 
 })();
