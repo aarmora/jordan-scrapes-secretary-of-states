@@ -1,8 +1,6 @@
-# Jordan Scrapes Secretary of States: Idaho
+# Jordan Scrapes Secretary of States: North Dakota
 
 This package has some sample code getting data from the [Idaho Secretary of Search Business Search](https://sosbiz.idaho.gov/search/business). 
-
-Upon discovering that North Dakota uses the same software for their businesses database, the main functions doing the work have been abstracted to the [businesssearch-helpers]() section.
 
 ## Getting Started
 

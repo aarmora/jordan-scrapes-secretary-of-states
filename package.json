@@ -11,7 +11,8 @@
 		"start:wyoming": "tsc && node ./dist/wyoming/index.js",
 		"start:washington": "tsc && node ./dist/washington/index.js",
 		"start:newMexico": "tsc && node ./dist/newMexico/index.js",
-		"start:colorado": "tsc && node ./dist/colorado/index.js"
+		"start:colorado": "tsc && node ./dist/colorado/index.js",
+		"start:northDakota": "tsc && node ./dist/northDakota/index.js"
 	},
 	"repository": {
 		"type": "git",

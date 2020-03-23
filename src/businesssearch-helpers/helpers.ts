@@ -1,19 +1,88 @@
-import { getBusinessInformation } from './idaho';
+import axios, { AxiosResponse } from 'axios';
 import { timeout } from "./../helpers";
+// const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const alphabet = ["b", "s"];
 
-// (async () => {
+export async function searchBusinesses(search: string, domain: string, date: string) {
+	const url = `https://${domain}/api/Records/businesssearch`;
+	const body = {
+		SEARCH_VALUE: search,
+		STARTS_WITH_YN: true,
+		CRA_SEARCH_YN: false,
+		ACTIVE_ONLY_YN: true
+	} as any;
 
-// 	await getBusinessDetails();
+	if (date) {
+		body.FILING_DATE = {
+			start: date,
+			end: null
+		};
+	}
+	let axiosResponse: AxiosResponse;
 
-// })();
+	try {
+		axiosResponse = await axios.post(url, body);
+	}
+	catch (e) {
+		console.log(`Error searching ${domain} business info for`, search, e);
+		throw `Error searching ${domain} business info for ${search}`;
 
-export async function getBusinessDetails(businesses: any[]) {
+	}
+
+	console.log('Total business found using', search, Object.keys(axiosResponse.data.rows).length);
+
+	if (axiosResponse.data) {
+		return Promise.resolve(axiosResponse.data.rows);
+	}
+	else {
+		return Promise.resolve(null);
+	}
+}
+
+export async function searchForBusinesses(domain: string, state: string, dateSearch = false) {
+	// Get the date - 1 day
+	const date = new Date(new Date().setDate(new Date().getDate() - 1)).toLocaleDateString();
+
+	const formattedBusinesses: any[] = [];
+	for (let i = 0; i < alphabet.length; i++) {
+
+		const businesses = await searchBusinesses(alphabet[i], domain, dateSearch ? date : null);
+
+		for (let key in businesses) {
+			if (businesses.hasOwnProperty(key)) {
+				const currentDate = new Date();
+				const formattedBusiness = {
+					filingDate: businesses[key].FILING_DATE,
+					recordNumber: businesses[key].RECORD_NUM,
+					agent: businesses[key].AGENT,
+					status: businesses[key].STATUS,
+					standing: businesses[key].STANDING,
+					title: businesses[key].TITLE[0].split('(')[0].trim(),
+					state: state,
+					sosId: businesses[key].ID,
+					createdAt: currentDate,
+					updatedAt: currentDate
+				};
+				formattedBusinesses.push(formattedBusiness);
+			}
+		}
+
+		console.log('formattedBusinesses sample', formattedBusinesses[3], formattedBusinesses[150]);
+
+		// Wait five seconds like good citizens
+		await timeout(5000);
+	}
+
+	return formattedBusinesses;
+}
+
+export async function getBusinessDetails(businesses: any[], domain: string) {
 
 	console.log('business.length', businesses.length);
 
 	for (let i = 0; i < businesses.length; i++) {
 
-		const businessInfo = await getBusinessInformation(businesses[i].sosId);
+		const businessInfo = await getBusinessInformation(businesses[i].sosId, domain);
 		console.log('checking business info for', businesses[i]);
 
 		businesses[i].filingType = businessInfo.DRAWER_DETAIL_LIST[0].VALUE;
@@ -56,7 +125,6 @@ export async function getBusinessDetails(businesses: any[]) {
 
 		}
 
-
 		if (businessInfo.DRAWER_DETAIL_LIST[8] && businessInfo.DRAWER_DETAIL_LIST[8].LABEL === 'Registered Agent') {
 			// Registered agent stuff
 			const registeredAgentSplit = businessInfo.DRAWER_DETAIL_LIST[8].VALUE.split(/\n/);
@@ -71,9 +139,24 @@ export async function getBusinessDetails(businesses: any[]) {
 			businesses[i].registeredAgentZipcode = formattedCityStateAndZip.zipcode;
 		}
 
-
 		businesses[i].updatedAt = new Date();
 	}
+}
+
+export async function getBusinessInformation(businessId: number, domain: string) {
+	const url = `https://${domain}/api/FilingDetail/business/${businessId}/false`;
+
+	let axiosResponse: AxiosResponse;
+	try {
+		axiosResponse = await axios.get(url);
+	}
+	catch (e) {
+		console.log(`Error getting ${domain} business info for`, businessId);
+		throw `Error getting ${domain} business info for ${businessId}`;
+	}
+
+	return Promise.resolve(axiosResponse.data);
+
 }
 
 function formatCityStateAndZip(cityStateAndZip: string) {

@@ -1,9 +1,8 @@
 import { searchForBusinesses, getBusinessDetails } from "./../businesssearch-helpers/helpers";
 
 (async () => {
-	const domain = 'sosbiz.idaho.gov';
-	const dateSearch = true;
-	const businesses = await searchForBusinesses(domain, 'Idaho', dateSearch);
+	const domain = 'firststop.sos.nd.gov';
+	const businesses = await searchForBusinesses(domain, 'North Dakota');
 	await getBusinessDetails(businesses, domain);
 
 	console.log('businesses', businesses);
