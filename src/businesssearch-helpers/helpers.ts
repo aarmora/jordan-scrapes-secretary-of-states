@@ -3,41 +3,6 @@ import { timeout } from "./../helpers";
 // const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const alphabet = ["b", "s"];
 
-export async function searchBusinesses(search: string, domain: string, date: string) {
-	const url = `https://${domain}/api/Records/businesssearch`;
-	const body = {
-		SEARCH_VALUE: search,
-		STARTS_WITH_YN: true,
-		CRA_SEARCH_YN: false,
-		ACTIVE_ONLY_YN: true
-	} as any;
-
-	if (date) {
-		body.FILING_DATE = {
-			start: date,
-			end: null
-		};
-	}
-	let axiosResponse: AxiosResponse;
-
-	try {
-		axiosResponse = await axios.post(url, body);
-	}
-	catch (e) {
-		console.log(`Error searching ${domain} business info for`, search, e.response ? e.response.data : '');
-		throw `Error searching ${domain} business info for ${search}`;
-
-	}
-
-	console.log('Total business found using', search, Object.keys(axiosResponse.data.rows).length);
-
-	if (axiosResponse.data) {
-		return Promise.resolve(axiosResponse.data.rows);
-	}
-	else {
-		return Promise.resolve(null);
-	}
-}
 
 export async function searchForBusinesses(domain: string, state: string, dateSearch = false) {
 	// Get the date - 1 day
@@ -72,6 +37,43 @@ export async function searchForBusinesses(domain: string, state: string, dateSea
 	}
 
 	return formattedBusinesses;
+}
+
+
+export async function searchBusinesses(search: string, domain: string, date: string) {
+	const url = `https://${domain}/api/Records/businesssearch`;
+	const body = {
+		SEARCH_VALUE: search,
+		STARTS_WITH_YN: true,
+		CRA_SEARCH_YN: false,
+		ACTIVE_ONLY_YN: true
+	} as any;
+
+	if (date) {
+		body.FILING_DATE = {
+			start: date,
+			end: null
+		};
+	}
+	let axiosResponse: AxiosResponse;
+
+	try {
+		axiosResponse = await axios.post(url, body);
+	}
+	catch (e) {
+		console.log(`Error searching ${domain} business info for`, search, e.response ? e.response.data : '');
+		throw `Error searching ${domain} business info for ${search}`;
+
+	}
+
+	console.log('Total business found using', search, Object.keys(axiosResponse.data.rows).length);
+
+	if (axiosResponse.data) {
+		return Promise.resolve(axiosResponse.data.rows);
+	}
+	else {
+		return Promise.resolve(null);
+	}
 }
 
 export async function getBusinessDetails(businesses: any[], domain: string) {

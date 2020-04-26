@@ -12,7 +12,8 @@
 		"start:washington": "tsc && node ./dist/washington/index.js",
 		"start:newMexico": "tsc && node ./dist/newMexico/index.js",
 		"start:colorado": "tsc && node ./dist/colorado/index.js",
-		"start:northDakota": "tsc && node ./dist/northDakota/index.js"
+		"start:northDakota": "tsc && node ./dist/northDakota/index.js",
+		"start:connecticut": "tsc && node ./dist/connecticut/index.js"
 	},
 	"repository": {
 		"type": "git",
