@@ -19,3 +19,5 @@
 [Colorado](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/colorado)
 
 [North Dakota](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/northDakota)
+
+[Connecticut](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/connecticut)
