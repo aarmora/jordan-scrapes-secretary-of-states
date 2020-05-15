@@ -28,6 +28,7 @@ npm i
 
 * [NodeJS](https://nodejs.org/en/) - NodeJS
 * [axios](https://github.com/axios/axios) - Promise based http request package
+* [cheerio](https://github.com/cheeriojs/cheerio) - Simple html parser with easy selector
 
 ## Authors
 

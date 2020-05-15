@@ -15,10 +15,10 @@ const client = new Client(process.env.capatchaApiKey, {
 
 	let errorCount = 0;
 
-	// 7862248
+	// 7867248
 
-	for (let i = 0; i < 10000; i += 100) {
-		await getDelaware(browser, 7860748 + i, errorCount);
+	for (let i = 0; i < 1000000; i += 10000) {
+		await getDelaware(browser, 7867248 + i, errorCount);
 		console.log('error count', errorCount);
 
 		if (errorCount > 10) {
@@ -49,7 +49,14 @@ async function getDelaware(browser: Browser, entityNumber: number, errorCount: n
 
 	await page.type('#ctl00_ContentPlaceHolder1_frmFileNumber', entityNumber.toString());
 
-	await page.type('#ctl00_ContentPlaceHolder1_ctl05_rcTextBox1', captchaResponse._text);
+	try {
+
+		await page.type('#ctl00_ContentPlaceHolder1_ctl05_rcTextBox1', captchaResponse._text);
+	}
+	catch (e) {
+		console.log('maybe captcha failed', e);
+		return await page.close();
+	}
 
 	await page.click('#ctl00_ContentPlaceHolder1_btnSubmit');
 
@@ -74,8 +81,10 @@ async function getDelaware(browser: Browser, entityNumber: number, errorCount: n
 		console.log('No sign of entity name, maybe there are not any more? We will continue to the next iteration.');
 		errorCount = errorCount++;
 		return await page.close();
-
 	}
+
+	// We found it, let's rest our error count
+	errorCount = 0;
 
 	await page.click('#ctl00_ContentPlaceHolder1_rptSearchResults_ctl00_lnkbtnEntityName');
 
@@ -84,8 +93,25 @@ async function getDelaware(browser: Browser, entityNumber: number, errorCount: n
 
 	const date = await page.$eval('#ctl00_ContentPlaceHolder1_lblIncDate', element => element.textContent);
 	const name = await page.$eval('#ctl00_ContentPlaceHolder1_lblEntityName', element => element.textContent);
+	const registeredAgentName = await page.$eval('#ctl00_ContentPlaceHolder1_lblAgentName', element => element.textContent);
+	const registeredAgentStreetAddress = await page.$eval('#ctl00_ContentPlaceHolder1_lblAgentAddress1', element => element.textContent);
+	const registeredAgentCity = await page.$eval('#ctl00_ContentPlaceHolder1_lblAgentCity', element => element.textContent);
+	const registeredAgentState = await page.$eval('#ctl00_ContentPlaceHolder1_lblAgentState', element => element.textContent);
+	const registeredAgentZip = await page.$eval('#ctl00_ContentPlaceHolder1_lblAgentState', element => element.textContent);
+	const registeredAgentPhone = await page.$eval('#ctl00_ContentPlaceHolder1_lblAgentPhone', element => element.textContent);
 
-	console.log('date and name', date, name);
+	const business = {
+		title: name,
+		filingDate: date,
+		registeredAgentName: registeredAgentName,
+		registeredAgentStreetAddress: registeredAgentStreetAddress,
+		registeredAgentCity: registeredAgentCity,
+		registeredAgentState: registeredAgentState,
+		registeredAgentZip: registeredAgentZip,
+		registeredAgentPhone: registeredAgentPhone
+	};
+
+	console.log('business', business);
 
 	await page.close();
 }

@@ -30,7 +30,5 @@ async function getBusinessDetails(id: number) {
 		officer: officer
 	};
 
-
 	console.log('business', business);
-
 }
