@@ -21,3 +21,5 @@
 [Connecticut](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/connecticut)
 
 [West Virginia](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/westVirginia)
+
+[Michigan](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/michigan)

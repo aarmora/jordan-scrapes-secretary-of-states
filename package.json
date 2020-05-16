@@ -13,7 +13,10 @@
 		"start:colorado": "tsc && node ./dist/colorado/index.js",
 		"start:northDakota": "tsc && node ./dist/northDakota/index.js",
 		"start:connecticut": "tsc && node ./dist/connecticut/index.js",
-		"start:westVirginia": "tsc && node ./dist/westVirginia/index.js"
+		"start:westVirginia": "tsc && node ./dist/westVirginia/index.js",
+		"start:newYork": "tsc && node ./dist/newYork/index.js",
+		"start:illinois": "tsc && node ./dist/illinois/index.js",
+		"start:michigan": "tsc && node ./dist/michigan/index.js"
 	},
 	"repository": {
 		"type": "git",
