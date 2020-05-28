@@ -15,10 +15,10 @@ const client = new Client(process.env.capatchaApiKey, {
 
 	let errorCount = 0;
 
-	// 7867248
+	const startingId = 7967551;
 
-	for (let i = 0; i < 1000000; i += 10000) {
-		await getDelaware(browser, 7867248 + i, errorCount);
+	for (let i = 0; i < 100; i++) {
+		await getDelaware(browser, startingId + i, errorCount);
 		console.log('error count', errorCount);
 
 		if (errorCount > 10) {
@@ -75,7 +75,7 @@ async function getDelaware(browser: Browser, entityNumber: number, errorCount: n
 	}
 
 	try {
-		await page.waitForSelector('#ctl00_ContentPlaceHolder1_rptSearchResults_ctl00_lnkbtnEntityName', { timeout: 750 });
+		await page.waitForSelector('#ctl00_ContentPlaceHolder1_rptSearchResults_ctl00_lnkbtnEntityName', { timeout: 1500 });
 	}
 	catch (e) {
 		console.log('No sign of entity name, maybe there are not any more? We will continue to the next iteration.');
