@@ -4,8 +4,6 @@ import { timeout } from '../helpers';
 (async () => {
 	const startingId = 4479034;
 
-
-
 	for (let i = 0; i < 25; i++) {
 		const url = `https://businesssearchapi.ohiosos.gov/Rtj0lqmmno6vaBwbRxU7TunJY6RmAt0bipK${startingId + i}?_=1590620350441`;
 
@@ -20,6 +18,7 @@ import { timeout } from '../helpers';
 			console.log('Registrant', businessData[1].registrant[0].charter_num, businessData[1].registrant[0].contact_name);
 			console.log('First panel', businessData[4].firstpanel[0].business_name, businessData[4].firstpanel[0].effect_date);
 
+			// Other stuff that maybe you would want
 			// .registrant[0].effective_date_time,
 			// 	axiosResponse.data.data[1].registrant[0].charter_num,
 			// 	axiosResponse.data.data[1].registrant[0].effective_date_time,
