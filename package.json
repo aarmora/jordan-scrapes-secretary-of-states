@@ -18,7 +18,8 @@
 		"start:illinois": "tsc && node ./dist/illinois/index.js",
 		"start:michigan": "tsc && node ./dist/michigan/index.js",
 		"start:ohio": "tsc && node ./dist/ohio/index.js",
-		"start:maine": "tsc && node ./dist/maine/index.js"
+		"start:maine": "tsc && node ./dist/maine/index.js",
+		"start:vermont": "tsc && node ./dist/vermont/index.js"
 	},
 	"repository": {
 		"type": "git",

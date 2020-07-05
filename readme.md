@@ -27,3 +27,5 @@
 [Ohio](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/ohio)
 
 [Maine](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/maine)
+
+[Vermont](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/vermont)
