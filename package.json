@@ -19,7 +19,8 @@
 		"start:michigan": "tsc && node ./dist/michigan/index.js",
 		"start:ohio": "tsc && node ./dist/ohio/index.js",
 		"start:maine": "tsc && node ./dist/maine/index.js",
-		"start:vermont": "tsc && node ./dist/vermont/index.js"
+		"start:vermont": "tsc && node ./dist/vermont/index.js",
+		"start:northCarolina": "tsc && node ./dist/northCarolina/index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -40,6 +41,7 @@
 		"@types/axios": "^0.14.0",
 		"@types/cheerio": "^0.22.15",
 		"@types/dotenv": "^8.2.0",
+		"@types/form-data": "^2.5.0",
 		"@types/node": "^13.5.0",
 		"@types/puppeteer": "^2.0.1",
 		"typescript": "^3.7.5"
@@ -49,6 +51,7 @@
 		"axios": "^0.19.2",
 		"cheerio": "^1.0.0-rc.3",
 		"dotenv": "^8.2.0",
+		"form-data": "^3.0.0",
 		"puppeteer": "^2.1.1"
 	}
 }
