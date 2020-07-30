@@ -7,6 +7,7 @@ import { timeout } from '../helpers';
 	const startingId = 16199838;
 	const startingSosId = 2011748;
 
+	// Increment by large amounts so we can find the most recently registered businesses
 	for (let i = 0; i < 5000; i += 100) {
 		// We use the query post to get the database id
 		const databaseId = await getDatabaseId(startingSosId + i);
