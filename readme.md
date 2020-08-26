@@ -33,3 +33,7 @@
 [North Carolina](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/northCarolina)
 
 [Hawaii](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/hawaii)
+
+[Alaska](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/alaska)
+
+[Alabama](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/hawaii)

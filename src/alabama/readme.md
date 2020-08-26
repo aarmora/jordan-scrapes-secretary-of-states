@@ -2,7 +2,7 @@
 
 This package has some sample code getting data from the [Alabama Secretary of Search Business Search](https://www.sos.alabama.gov/government-records/business-entity-records). 
 
-A simple search and scrape of Alabama businesses using *FIX* incrementing ids to get the most recently registered businesses.
+A simple search and scrape of Alabama businesses using incrementing ids to get the most recently registered businesses.
 
 ## Getting Started
 
