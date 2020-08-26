@@ -2,7 +2,7 @@
 
 This package has some sample code getting data from the [Alaska Secretary of Search Business Search](https://www.commerce.alaska.gov/cbp/main/). 
 
-A simple search and scrape of Alaska businesses using *FIX* incrementing ids to get the most recently registered businesses.
+A simple search and scrape of Alaska businesses using incrementing ids to get the most recently registered businesses.
 
 ## Getting Started
 
@@ -40,4 +40,3 @@ npm i
 ## License
 
 This project is licensed under the ISC License
-
