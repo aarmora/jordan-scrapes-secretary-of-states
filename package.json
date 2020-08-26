@@ -21,7 +21,9 @@
 		"start:maine": "tsc && node ./dist/maine/index.js",
 		"start:vermont": "tsc && node ./dist/vermont/index.js",
 		"start:northCarolina": "tsc && node ./dist/northCarolina/index.js",
-		"start:hawaii": "tsc && node ./dist/hawaii/index.js"
+		"start:hawaii": "tsc && node ./dist/hawaii/index.js",
+		"start:alaska": "tsc && node ./dist/alaska/index.js",
+		"start:alabama": "tsc && node ./dist/alabama/index.js"
 	},
 	"repository": {
 		"type": "git",
