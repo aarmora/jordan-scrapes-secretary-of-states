@@ -4,7 +4,6 @@ import FormData from 'form-data';
 import { timeout } from '../helpers';
 
 (async () => {
-	const startingId = 16199838;
 	const startingSosId = 2011748;
 
 	// Increment by large amounts so we can find the most recently registered businesses
@@ -50,7 +49,6 @@ async function getDatabaseId(sosId: number) {
 		console.log('No business found for SosId', sosId);
 		return null;
 	}
-
 }
 
 async function getBusinessDetails(databaseId: string) {
@@ -102,7 +100,6 @@ async function getBusinessDetails(databaseId: string) {
 					break;
 			}
 		}
-
 	}
 
 	console.log('business', business);
