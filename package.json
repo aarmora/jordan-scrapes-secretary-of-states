@@ -23,7 +23,8 @@
 		"start:northCarolina": "tsc && node ./dist/northCarolina/index.js",
 		"start:hawaii": "tsc && node ./dist/hawaii/index.js",
 		"start:alaska": "tsc && node ./dist/alaska/index.js",
-		"start:alabama": "tsc && node ./dist/alabama/index.js"
+		"start:alabama": "tsc && node ./dist/alabama/index.js",
+		"start:arizona": "tsc && node ./dist/arizona/index.js"
 	},
 	"repository": {
 		"type": "git",
