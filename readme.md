@@ -37,3 +37,5 @@
 [Alaska](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/alaska)
 
 [Alabama](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/alabama)
+
+[Arizona](https://github.com/aarmora/jordan-scrapes-secretary-of-states/tree/master/src/arizona)
