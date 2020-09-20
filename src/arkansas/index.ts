@@ -6,7 +6,7 @@ import { timeout } from "../helpers";
     const startingId = 566000;
     for (let i = 0; i <= 20; i += 1) {
         await getDetails(startingId + i);
-        //Longer timeout needed because of DDOS protection from website
+        //Longer timeout needed because of protection from website
         await timeout(3000);
     }
 })();
