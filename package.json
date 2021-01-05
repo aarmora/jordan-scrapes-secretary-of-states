@@ -54,7 +54,7 @@
 	},
 	"dependencies": {
 		"@infosimples/node_two_captcha": "^1.0.2",
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"cheerio": "^1.0.0-rc.3",
 		"dotenv": "^8.2.0",
 		"form-data": "^3.0.0",
